@@ -1,7 +1,73 @@
-.container {
-    //background: url(http://wallpapercave.com/wp/1IsXQYm.jpg);
-    //font-family: 'Black Ops One', cursive;
+body {
+    background: url(https://lh3.googleusercontent.com/-srqCEHNVAX8/Uf3ixmTVAmI/AAAAAAAAAP4/XG21iqsWzGgLdYok-iEBCFtFCj8kcIEwACL0B/w692-h389-n-no/camouflage-pattern-shop.jpg);
+    font-family: 'Black Ops One', cursive;
 }
+
+#header{
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-size: 5rem;
+    border-radius: 35px 15px 35px 15px;
+    text-shadow:
+    0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
+}
+
+#start {
+    margin: 10% 25%;
+    width: 50%;
+    text-align: center;
+    font-size: 2rem;
+    background: lime;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 3px 3px black;
+
+    &:hover {
+        background: #A81616;
+        color: black;
+    }
+}
+
+#logo {
+    margin-top: 1%;
+    width: 7%;
+    height: 100px;
+}
+
+#red {
+    color: #A81616;
+    margin: 0;
+    padding: 0;
+}
+
+#blue {
+    color: #162261;
+    margin: 0;
+    padding: 0;
+}
+
+#white {
+    color: #D5D3D4;
+    margin: 0 -2%;
+    padding: 0;
+}
+
 .results {
     background: white;
     margin: 2%;
@@ -10,8 +76,29 @@
     height: 100px;
     overflow: scroll;
     font-size: 1.25rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px black;
+    cursor: pointer;
+    background: #CEC6C2;
+}
+
+.category {
+    padding: 10%;
 }
 
 .hidden {
     display: none;
 }
+
+.fullscreen{
+    transform: scale(1);
+ }
+
+ input {
+     margin: 0 40%;
+     width: 20%;
+     position: fixed;
+     z-index: 1000;
+     height: 30px;
+ }

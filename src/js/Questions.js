@@ -5,7 +5,12 @@ class Question {
         this.value = options.value;
         this.category = options.category.toUpperCase();
         this.question = options.question;
+        this.viewed = false;
     }
+
+    toggleCompleted () {
+    this.viewed = !this.viewed;
+  }
 }
 
 export { Question };
