@@ -1,0 +1,17 @@
+.container {
+    //background: url(http://wallpapercave.com/wp/1IsXQYm.jpg);
+    //font-family: 'Black Ops One', cursive;
+}
+.results {
+    background: white;
+    margin: 2%;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    overflow: scroll;
+    font-size: 1.25rem;
+}
+
+.hidden {
+    display: none;
+}
