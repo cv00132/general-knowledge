@@ -68,8 +68,11 @@ body {
     padding: 0;
 }
 
+.scoreboard {
+    width: 20%;
+}
+
 .results {
-    background: white;
     margin: 2%;
     display: inline-block;
     width: 20%;
@@ -85,6 +88,7 @@ body {
 
 .category {
     padding: 10%;
+    text-transform: uppercase;
 }
 
 .hidden {
@@ -92,13 +96,12 @@ body {
 }
 
 .fullscreen{
-    transform: scale(1);
+    height: 100%;
+    width: 100%;
  }
 
  input {
      margin: 0 40%;
      width: 20%;
-     position: fixed;
-     z-index: 1000;
      height: 30px;
  }

@@ -1,24 +1,35 @@
 import $ from 'jquery';
 
+function scoreboard(names) {
+    return `
+        <div class="players">
+            ${player.name}
+        </div>
+        <div class="scores">
+            ${player.score}
+        </div>
+    `
+}
+
 function gameboard(options) {
     return `
-    <div class="results">
-    <span id="${options.id}"</span>
+    <div class="results" id="${options.id}">
       <div class="category" >
         ${options.category}
           <div id="pointValue">
               $${options.value}
           </div>
-      </div>
-      <div class="question">
-          Question: ${options.question}
-      </div>
-      <div class="answer">
-          Answer: ${options.answer}
+          <div class="question hidden">
+              Q: ${options.question}
+          </div>
+          <div class="answer hidden">
+              A: ${options.answer}
+          </div>
       </div>
     </div>
+
   `
 };
 
 
-export { gameboard };
+export { gameboard, scoreboard };

@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import _ from 'lodash';
 import { Question } from './Questions';
 import { gameboard } from './Templates';
 
@@ -12,11 +11,11 @@ function getQuestions (questions) {
 }
 
 function sortData (data) {
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < 28; i++) {
     var dataPulled = data[i];
-    if(dataPulled.value === null) {
-        continue
-    }
+        if(dataPulled.value === null) {
+            continue
+        }
     var options = {
         id: i,
         category: dataPulled.category.title,

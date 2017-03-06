@@ -6,11 +6,11 @@ class Board {
         this.player = player;
         this.questions = question;
     };
-    checkAnswer(){
-        if(player.answer === question.answer) {
-            player.initScore += question.value;
-        }
-    }
+    // checkAnswer(){
+    //     if(player.answer === question.answer) {
+    //         player.score += question.value;
+    //     }
+    // }
 }
 
 export { Board } ;
