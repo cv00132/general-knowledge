@@ -45,8 +45,8 @@ body {
 }
 
 #logo {
-    margin-top: 1%;
-    width: 7%;
+    margin-top: 25px;
+    width: 90px;
     height: 100px;
 }
 
@@ -100,8 +100,17 @@ body {
     width: 100%;
  }
 
- input {
-     margin: 0 40%;
-     width: 20%;
-     height: 30px;
+ .playerInfo {
+     margin: 4% 37%;
+ }
+
+ #submitPlayer {
+     border-radius: 10px;
+     border: none;
+     box-shadow: 5px 3px 3px black;
+
+     &:hover {
+         background: lime;
+         color: black;
+     }
  }

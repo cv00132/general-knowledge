@@ -1,5 +1,4 @@
 import $ from 'jquery';
-// import { Board } from './Board';
 // import { Player } from './Player';
 // import { Questions } from './Questions';
 import { getQuestions, sortData } from './jservice-ajax';
@@ -10,7 +9,27 @@ $('#start').on('click', function(event) {
     $('#start').addClass('hidden');
 });
 
-$('.results').on('click', '.category', function() {
-    console.log(this.question);
-    $('.question').removeClass('hidden').addClass('fullscreen');
+$(document).on('click', '.results', function(event){
+    $(this).find('.question').removeClass('hidden')});
+
+$(document).on('click', '#submitPlayer', function(event){
+    var playerName = $(this).val('.playerName');
+    scoreboard(playerName)}
+);
+
+/*
+import $ from jquery;
+import {appcontroller} from app;
+import {getQuestions} from './jservice';
+
+var app = new AppController();
+
+getData.then(function (data) {
+  data.forEach(function (question) {
+    app.addQuestion(question);
+  }
 });
+
+app.start();
+
+*/

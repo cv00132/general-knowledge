@@ -14,6 +14,10 @@ class Question {
     toggleCompleted () {
     this.viewed = !this.viewed;
   }
+
+  // checkAnswer (answer) {
+  //     if ()
+  // }
 }
 
 export { Question };

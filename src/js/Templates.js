@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-function scoreboard(names) {
+function scoreboard() {
     return `
         <div class="players">
             ${player.name}
@@ -19,12 +19,11 @@ function gameboard(options) {
           <div id="pointValue">
               $${options.value}
           </div>
-          <div class="question hidden">
-              Q: ${options.question}
-          </div>
-          <div class="answer hidden">
-              A: ${options.answer}
-          </div>
+      <div class="question hidden">
+          Q: ${options.question}
+      </div>
+      <div class="answer hidden">
+          A: ${options.answer}
       </div>
     </div>
 
