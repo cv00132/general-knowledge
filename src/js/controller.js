@@ -20,36 +20,37 @@ class AppController {
         var newHtml = '';
 
         if (this.currentQuestion) {
-            newHtml = modalStuff ....
+            newHtml = `<div class="modal">
+                            Q: ${q.question}
+                        </div>`;
         } else {
             this.questions.forEach(function (q) {
                 var hiddenClass = q.viewed ? "" : "hidden";
                 var questionHtml = `
-                  <div class="question ${hiddenClass}" id="${q.id}">
-                    <span class="points">${q.points}</span>
-                    <p>${q.question}</p>
-                  </div>`
-                  newHtml = newHtml + questionHtml;
+                <div class="results" id="${q.id}">
+                  <div class="category" >
+                    ${q.category}
+                      <div id="pointValue">
+                          $${q.value}
+                      </div>
+                  <div class="answer ${hiddenClass}">
+                      A: ${q.answer}
+                  </div>
+                </div>
+              `;
+               newHtml = newHtml + questionHtml;
             })
-        }
-
-
-
-        if (this.currentQuestion) {
-            // drawModal
         }
 
         $('.board').html(newHtml);
     }
 
-    renderScoreboard () {}
-
     checkAnswer (event) {
         event.preventDefault();
-        var input = $(".playerName").val();
+        var input = $(".answer").val();
         var correct = this.currentQuestion.checkAnswer(input);
         if (correct) {
-            this.score += this.currentQuestion.points;
+            this.score += this.currentQuestion.value;
         }
         this.currentQuestion = null;
         this.render();
@@ -57,7 +58,7 @@ class AppController {
 
     chooseQuestion (event) {
 
-        // event.target.id is the id of the quesion we want
+        // event.target.id is the id of the question we want
         // _.find(this.questions, { id: event.target.id })
         // look that up in the array using the id
         // q.viewed = true;

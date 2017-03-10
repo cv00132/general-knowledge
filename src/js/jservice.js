@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import { Question } from './Questions';
-import { gameboard } from './Templates';
 
 function getQuestions (questions) {
   return $.ajax({
@@ -24,11 +22,6 @@ function sortData (data) {
         question: dataPulled.question,
         answer: dataPulled.answer,
     }
-    var question = new Question(options);
-    // it feels weird for sortData to "hold" the board object but it's not off limits
-    // game.addQuestion(question);
-    // game.render();
-    $('.board').append(gameboard(question));
   }
 }
 

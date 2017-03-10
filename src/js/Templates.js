@@ -26,7 +26,6 @@ function gameboard(options) {
           A: ${options.answer}
       </div>
     </div>
-
   `
 };
 
