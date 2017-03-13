@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import { Question } from './Questions';
+
 class AppController {
     constructor () {
         this.score = 0;
@@ -14,31 +17,53 @@ class AppController {
             answer: data.question
         })
         this.questions.push(question);
-    }
+    };
 
     render () {
         var newHtml = '';
+
+
+        function shuffle(array) {
+          var m = array.length, t, i;
+
+          // While there remain elements to shuffle…
+          while (m) {
+
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+          }
+
+          return array;
+        }
 
         if (this.currentQuestion) {
             newHtml = `<div class="modal">
                             Q: ${q.question}
                         </div>`;
         } else {
-            this.questions.forEach(function (q) {
-                var hiddenClass = q.viewed ? "" : "hidden";
-                var questionHtml = `
-                <div class="results" id="${q.id}">
-                  <div class="category" >
-                    ${q.category}
-                      <div id="pointValue">
-                          $${q.value}
-                      </div>
-                  <div class="answer ${hiddenClass}">
-                      A: ${q.answer}
-                  </div>
-                </div>
-              `;
-               newHtml = newHtml + questionHtml;
+            shuffle(this.questions)
+                .filter(function(option){ return option.value != null })
+                    .forEach(function (q) {
+                        var hiddenClass = q.viewed ? "" : "hidden";
+                        var questionHtml = `
+                        <div class="results" id="${q.id}">
+                          <div class="category" >
+                            ${q.category}
+                              <div id="pointValue">
+                                  $${q.value}
+                              </div>
+                              <div class="answer ${hiddenClass}">
+                                A: ${q.answer}
+                              </div>
+                          </div>
+                        </div>
+                      `;
+                       newHtml += questionHtml;
             })
         }
 
@@ -57,6 +82,8 @@ class AppController {
     }
 
     chooseQuestion (event) {
+        $('.question').click(this.chooseQuestion.bind(this));
+        console.log("click worked");
 
         // event.target.id is the id of the question we want
         // _.find(this.questions, { id: event.target.id })
@@ -68,7 +95,7 @@ class AppController {
 
     start () {
       this.render();
-      $('.question').click(this.chooseQuestion.bind(this));
-      $('.answer').submit(this.checkAnswer.bind(this));
     }
 }
+
+export { AppController };

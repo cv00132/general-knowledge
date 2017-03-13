@@ -11,13 +11,13 @@ class Question {
         this.viewed = false;
     }
 
-    toggleCompleted () {
+    toggleViewed () {
     this.viewed = !this.viewed;
   }
 
-  // checkAnswer (answer) {
-  //     if ()
-  // }
+   //  checkAnswer (answer) {
+   //     if ()
+   // }
 }
 
 export { Question };
