@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import { Question } from './Questions';
 
 class AppController {
@@ -14,7 +15,7 @@ class AppController {
             category: data.category.title,
             value: data.value,
             question: data.question,
-            answer: data.question
+            answer: data.answer
         })
         this.questions.push(question);
     };
@@ -22,52 +23,49 @@ class AppController {
     render () {
         var newHtml = '';
 
-
-        function shuffle(array) {
-          var m = array.length, t, i;
-
-          // While there remain elements to shuffle…
-          while (m) {
-
-            // Pick a remaining element…
-            i = Math.floor(Math.random() * m--);
-
-            // And swap it with the current element.
-            t = array[m];
-            array[m] = array[i];
-            array[i] = t;
-          }
-
-          return array;
-        }
-
         if (this.currentQuestion) {
             newHtml = `<div class="modal">
                             Q: ${q.question}
                         </div>`;
         } else {
-            shuffle(this.questions)
-                .filter(function(option){ return option.value != null })
-                    .forEach(function (q) {
-                        var hiddenClass = q.viewed ? "" : "hidden";
-                        var questionHtml = `
-                        <div class="results" id="${q.id}">
-                          <div class="category" >
-                            ${q.category}
-                              <div id="pointValue">
-                                  $${q.value}
-                              </div>
-                              <div class="answer ${hiddenClass}">
-                                A: ${q.answer}
-                              </div>
+            this.questions
+                .forEach(function (q) {
+                    var hiddenClass = q.viewed ? "" : "hidden";
+                    var questionHtml = `
+                    <div class="results ${q.viewed}" id="${q.id}">
+                      <div class="category" id="${q.id}">
+                        ${q.category}
+                          <div class="pointValue" id="${q.id}">
+                              $${q.value}
                           </div>
-                        </div>
-                      `;
-                       newHtml += questionHtml;
+                          <div class="answer ${hiddenClass}">
+                            A: ${q.answer}
+                          </div>
+                      </div>
+                    </div>
+                  `;
+                   newHtml += questionHtml;
             })
         }
 
         $('.board').html(newHtml);
+    }
+
+    chooseQuestion (event) {
+        var currentId = event.target.id;
+        _.find(this.questions, { 'id': currentId} );
+        this.currentQuestion = _.get(Question[currentId], 'question');
+        console.log(this.currentQuestion)
+        this.viewed = true;
+
+        //question.viewed = true;
+
+
+        // event.target.id is the id of the question we want
+        // _.find(this.questions, { id: event.target.id })
+        // look that up in the array using the id
+        // q.viewed = true;
+        // sets up the currentQuestion
     }
 
     checkAnswer (event) {
@@ -81,20 +79,9 @@ class AppController {
         this.render();
     }
 
-    chooseQuestion (event) {
-        $('.question').click(this.chooseQuestion.bind(this));
-        console.log("click worked");
-
-        // event.target.id is the id of the question we want
-        // _.find(this.questions, { id: event.target.id })
-        // look that up in the array using the id
-        // q.viewed = true;
-        // sets up the currentQuestion
-        this.render();
-    }
-
     start () {
       this.render();
+      $('.results').click(this.chooseQuestion.bind(this));
     }
 }
 

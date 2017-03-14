@@ -12,8 +12,13 @@ class Question {
     }
 
     toggleViewed () {
-    this.viewed = !this.viewed;
-  }
+    this.viewed = viewed;
+    if (viewed) {
+            viewed = false;
+        } else {
+            viewed = true;
+        }
+    };
 
    //  checkAnswer (answer) {
    //     if ()

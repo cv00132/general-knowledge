@@ -1,15 +1,17 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import { AppController } from './controller';
 import { getQuestions } from './jservice';
 
 var app = new AppController();
 
 getQuestions().then(function (data) {
-  data.forEach(function (question) {
-    app.addQuestion(question);
+  _.shuffle(data).filter(function(option){
+      return option.value != null
+  }).forEach(function (q) {
+      app.addQuestion(q);
   })
-  $("#start").click(function () { app.start(); });
-  // app.start();
+  $("#start").click(function () {
+      app.start();
+  });
 });
-
-// app.start();
