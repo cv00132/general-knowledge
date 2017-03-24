@@ -1,31 +1,49 @@
+@import "bulma";
+
+* {
+    border: 2px solid yellow;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+}
+
+html {
+    background: url(http://www.desktop-image.com/wp-content/uploads/2014/08/army-background-check-form.jpg);
+    background-size: cover;
+}
+
 body {
-    background: url(https://lh3.googleusercontent.com/-srqCEHNVAX8/Uf3ixmTVAmI/AAAAAAAAAP4/XG21iqsWzGgLdYok-iEBCFtFCj8kcIEwACL0B/w692-h389-n-no/camouflage-pattern-shop.jpg);
-    font-family: 'Black Ops One', cursive;
+    font-family: 'Armalite Rifle', cursive;
+}
+
+button {
+    font-family: 'Armalite Rifle', cursive;
 }
 
 #header{
-    margin: 0 auto;
-    width: 80%;
+    color: #20241d;
+    margin: 0;
     text-align: center;
     font-size: 5rem;
     border-radius: 35px 15px 35px 15px;
     text-shadow:
-    0 1px 0px #378ab4,
-    1px 0 0px #5dabcd,
-    1px 2px 1px #378ab4,
-    2px 1px 1px #5dabcd,
-    2px 3px 2px #378ab4,
-    3px 2px 2px #5dabcd,
-    3px 4px 2px #378ab4,
-    4px 3px 3px #5dabcd,
-    4px 5px 3px #378ab4,
-    5px 4px 2px #5dabcd,
-    5px 6px 2px #378ab4,
-    6px 5px 2px #5dabcd,
-    6px 7px 1px #378ab4,
-    7px 6px 1px #5dabcd,
-    7px 8px 0px #378ab4,
-    8px 7px 0px #5dabcd;
+    0 1px 0px #9eaa94,
+    1px 0 0px #929e86,
+    1px 2px 1px #859378,
+    2px 1px 1px #78866b,
+    2px 3px 2px #6b7860,
+    3px 2px 2px #5f6a54,
+    3px 4px 2px #859378,
+    4px 3px 3px #78866b,
+    4px 5px 3px #6b7860,
+    5px 4px 2px #5f6a54,
+    5px 6px 2px #859378,
+    6px 5px 2px #78866b,
+    6px 7px 1px #6b7860,
+    7px 6px 1px #5f6a54,
+    7px 8px 0px #525b49;
 }
 
 #start {
@@ -50,26 +68,8 @@ body {
     height: 100px;
 }
 
-#red {
-    color: #A81616;
-    margin: 0;
-    padding: 0;
-}
-
-#blue {
-    color: #162261;
-    margin: 0;
-    padding: 0;
-}
-
-#white {
-    color: #D5D3D4;
-    margin: 0 -2%;
-    padding: 0;
-}
-
-.scoreboard {
-    width: 20%;
+.board {
+    height: 100%;
 }
 
 .results {
@@ -86,8 +86,16 @@ body {
     overflow-x: scroll;
 }
 
+.timer {
+    width: 25px;
+    height: 50px;
+    font-size: 14px;
+    color: white;
+}
+
 .category {
-    padding-top: 8%;
+    width: 200px;
+    margin: 5%;
     text-transform: uppercase;
 }
 
@@ -95,16 +103,23 @@ body {
     display: none;
 }
 
-.fullscreen{
-    height: 100%;
-    width: 100%;
+ .question {
+     margin: 5% 0;
  }
 
- .playerInfo {
-     margin: 4% 36%;
+.answered {
+    background-color: red !important;
+}
+
+ .answerBox {
+     margin: 0 12.5%;
+     width: 75%;
+     height: 60px;
  }
 
  #submitAnswer {
+     margin: 0 35%;
+     padding: 5px;
      border-radius: 10px;
      border: none;
      box-shadow: 5px 3px 3px black;
@@ -113,4 +128,12 @@ body {
          background: lime;
          color: black;
      }
+ }
+
+
+ .modal-content {
+     color: white;
+     font-size: 3.5rem;
+     width: 100%;
+     height: 100%;
  }
