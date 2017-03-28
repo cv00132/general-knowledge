@@ -11,7 +11,7 @@ getQuestions().then(function (data) {
   }).forEach(function (q) {
       app.addQuestion(q);
   })
-  $("#start").click(function () {
+  $(".start").click(function () {
       app.start();
   });
 });

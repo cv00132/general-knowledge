@@ -1,7 +1,6 @@
 @import "bulma";
 
 * {
-    border: 2px solid yellow;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -23,10 +22,11 @@ button {
 }
 
 #header{
+    width: 101%;
     color: #20241d;
     margin: 0;
     text-align: center;
-    font-size: 5rem;
+    font-size: 6rem;
     border-radius: 35px 15px 35px 15px;
     text-shadow:
     0 1px 0px #9eaa94,
@@ -46,55 +46,70 @@ button {
     7px 8px 0px #525b49;
 }
 
-#start {
-    margin: 5% 25%;
-    width: 50%;
+.start {
+    margin: 5% 35%;
     text-align: center;
-    font-size: 2rem;
-    background: lime;
-    border-radius: 10px;
-    border: none;
-    box-shadow: 5px 3px 3px black;
+    font-size: 3.15rem;
+    background: linear-gradient(lime, chartreuse);
+    border: linear-gradient(lightgrey, grey);
+    box-shadow: inset 0px 1px 2px 2px black;
+    height: 350px;
+    width: 350px;
+    border-radius: 100%  100%  100%  100%;
 
     &:hover {
-        background: #A81616;
+        background: linear-gradient(#A81616, red);
         color: black;
+        box-shadow: inset 1px 2px 4px 6px black;
+        transform: scale(.98);
     }
 }
 
 #logo {
     margin-top: 25px;
-    width: 90px;
-    height: 100px;
+    width: 10%;
 }
 
 .board {
     height: 100%;
 }
 
+.scoreboard {
+    font-family: 'Orbitron', sans-serif;
+    width: 25%;
+    height: auto;
+    margin: 2% auto;
+    padding: 5px;
+    background: black;
+    color: lime;
+    border: 2px solid grey;
+}
+
 .results {
-    margin: 2%;
+    margin: 1%;
     display: inline-block;
-    width: 20%;
+    width: 22%;
     height: 100px;
-    font-size: 1.25rem;
+    font-size: 1.7rem;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 7px 6px 21px black;
     cursor: pointer;
-    background: #CEC6C2;
+    background: url(https://previews.123rf.com/images/alexmax/alexmax0711/alexmax071100009/2010558-Brass-shiny-metal-plate-with-screws-background-texture-Stock-Photo.jpg);
+    background-size: cover;
     overflow-x: scroll;
 }
 
 .timer {
-    width: 25px;
-    height: 50px;
-    font-size: 14px;
+    width: 125px;
+    height: 150px;
+    font-size: 48pt;
     color: white;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .category {
-    width: 200px;
     margin: 5%;
     text-transform: uppercase;
 }
@@ -122,11 +137,13 @@ button {
      padding: 5px;
      border-radius: 10px;
      border: none;
-     box-shadow: 5px 3px 3px black;
+     box-shadow: 7px 6px 21px black;
+     background: url(https://previews.123rf.com/images/alexmax/alexmax0711/alexmax071100009/2010558-Brass-shiny-metal-plate-with-screws-background-texture-Stock-Photo.jpg);
+     background-size: cover;
 
      &:hover {
-         background: lime;
-         color: black;
+         color: lime;
+         transform: scale(.97);
      }
  }
 

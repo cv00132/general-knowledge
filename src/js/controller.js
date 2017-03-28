@@ -21,9 +21,10 @@ class AppController {
     };
 
     render () {
-        var newHtml = '';
+        var newHtml = ``;
 
         if (this.currentQuestion != "") {
+            this.currentQuestion.viewed = true;
             newHtml = `<div id="modal" class="modal is-active">
                           <div class="modal-background"></div>
                               <div class="modal-content">
@@ -36,23 +37,22 @@ class AppController {
                                     </button>
                                 <div class="timer"></div>
                               </div>
-                          <button class="modal-close"></button>
                         </div>`;
                         this.reRender();
                     } else {
-
                         this.questions
                         .forEach(function (q) {
-                            var hiddenClass = q.viewed ? "" : "hidden";
+                            var showAnswer = q.viewed ? "answered" : "hidden";
+                            var hideCategory = q.viewed ? "hidden" : "";
                             var questionHtml = `
-                            <div class="results ${q.viewed}" id="${q.id}">
+                            <div class="results ${q.viewed} ${hideCategory}" id="${q.id}">
                                 <div class="category" id="${q.id}">
                                         ${q.category}
                                     <div class="pointValue" id="${q.id}">
                                         $${q.value}
                                     </div>
-                                    <div class="answer ${hiddenClass}">
-                                        A: ${q.answer}
+                                    <div class="answer ${showAnswer}">
+                                        ${q.answer}
                                     </div>
                                 </div>
                             </div>`;
@@ -61,7 +61,6 @@ class AppController {
                     }
                     $('.board').html(newHtml);
                     this.submitAnswer();
-
                 }
 
     chooseQuestion (event) {
@@ -73,52 +72,44 @@ class AppController {
 
     checkAnswer () {
         var input = $('.answerBox').val().split(" ");
-        //console.log(input);
         var correct = this.currentQuestion.checkAnswer(input);
-        console.log(correct, 'this is correct');
         if (correct) {
             this.score += this.currentQuestion.value;
             //WE HAVE ID HERE OF THE SELECTED QUESTION
-            this.updateBoard(this.currentQuestion);
-
+            // this.updateBoard(this.currentQuestion);
         }
-        console.log(this.score);
-        this.currentQuestion = null;
+        $('#score').html(this.score);
+        this.currentQuestion = "";
     }
 
     submitAnswer () {
         $("#submitAnswer").click(() => {
-            $('#modal').removeClass('is-active');
             this.checkAnswer();
-        });
-        //this.render();
+        })
         //$('#modal').removeClass('is-active');
-        // this.render();
-    }
+        //this.render();
 
-    updateBoard () {
-        $(`#${this.currentQuestion.id}`).addClass('answered');
     }
 
     reRender() {
         var count = 15;
         var timer = setInterval(() => {
-            count = count - 1;
+            count -= 1;
             $('.timer').html(count);
         }, 1000);
         count = 15;
-        setTimeout (() => {
-            $('#modal').removeClass('is-active');
+        var timeout = setTimeout (() => {
             this.currentQuestion = '';
             clearInterval(timer);
             this.render();
-            $('.results').click(this.chooseQuestion.bind(this));
         }, 15000);
+        clearTimeout();
     }
 
     start () {
       this.render();
-      $('.results').click(this.chooseQuestion.bind(this));
+      $(document).on('click','.results', this.chooseQuestion.bind(this));
+      $('.scoreboard').removeClass('hidden');
      }
 }
 
