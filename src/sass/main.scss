@@ -9,7 +9,7 @@
 }
 
 html {
-    background: url(http://www.desktop-image.com/wp-content/uploads/2014/08/army-background-check-form.jpg);
+    background: url(../images/jeep-background.jpg);
     background-size: cover;
 }
 
@@ -95,7 +95,7 @@ button {
     border-radius: 5px;
     box-shadow: 7px 6px 21px black;
     cursor: pointer;
-    background: url(https://previews.123rf.com/images/alexmax/alexmax0711/alexmax071100009/2010558-Brass-shiny-metal-plate-with-screws-background-texture-Stock-Photo.jpg);
+    background: url(../images/steel-plate.jpg);
     background-size: cover;
     overflow-x: scroll;
 }
@@ -119,38 +119,39 @@ button {
 }
 
  .question {
-     margin: 5% 0;
+    margin: 5%;
  }
 
 .answered {
     background-color: red !important;
 }
 
- .answerBox {
-     margin: 0 12.5%;
-     width: 75%;
-     height: 60px;
- }
+.answerBox {
+    margin: 0 12.5%;
+    width: 75%;
+    line-height: 2rem;
+}
 
- #submitAnswer {
-     margin: 0 35%;
-     padding: 5px;
-     border-radius: 10px;
-     border: none;
-     box-shadow: 7px 6px 21px black;
-     background: url(https://previews.123rf.com/images/alexmax/alexmax0711/alexmax071100009/2010558-Brass-shiny-metal-plate-with-screws-background-texture-Stock-Photo.jpg);
-     background-size: cover;
+#submitAnswer {
+    margin: 0 35%;
+    padding: 5px;
+    border-radius: 5px;
+    border: outset;
+    box-shadow: 7px 6px 21px black;
+    background: url(../images/steel.jpg);
+    background-size: cover;
 
-     &:hover {
-         color: lime;
-         transform: scale(.97);
-     }
- }
+    &:hover {
+        color: lime;
+        transform: scale(.97);
+        border: inset;
+    }
+}
 
 
- .modal-content {
-     color: white;
-     font-size: 3.5rem;
-     width: 100%;
-     height: 100%;
- }
+.modal-content {
+    color: white;
+    font-size: 3.5rem;
+    width: 100%;
+    height: 100%;
+}
