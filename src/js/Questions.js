@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { AppController } from "./controller.js";
 
 class Question {
     constructor (options) {
@@ -13,8 +14,8 @@ class Question {
     }
 
     toggleViewed () {
-    this.viewed = viewed;
-    if (viewed) {
+        this.viewed = viewed;
+        if (viewed) {
             viewed = false;
         } else {
             viewed = true;
@@ -27,7 +28,6 @@ class Question {
         guess.forEach((input) => {
             //console.log(this.answer.includes(input));
             if (!this.answer.includes(input)) {
-
             } else {
                 //console.log('from true');
                 return correct = true;

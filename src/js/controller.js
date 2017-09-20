@@ -7,7 +7,7 @@ class AppController {
         this.score = 0;
         this.questions = [];
         this.currentQuestion = "";
-    }
+    };
 
     addQuestion (data) {
         var question = new Question({
@@ -38,37 +38,37 @@ class AppController {
                                 <div class="timer"></div>
                               </div>
                         </div>`;
-                        this.reRender();
-                    } else {
-                        this.questions
-                        .forEach(function (q) {
-                            var showAnswer = q.viewed ? "answered" : "hidden";
-                            var hideCategory = q.viewed ? "hidden" : "";
-                            var questionHtml = `
-                            <div class="results ${q.viewed} ${hideCategory}" id="${q.id}">
-                                <div class="category" id="${q.id}">
-                                        ${q.category}
-                                    <div class="pointValue" id="${q.id}">
-                                        $${q.value}
-                                    </div>
-                                    <div class="answer ${showAnswer}">
-                                        ${q.answer}
-                                    </div>
-                                </div>
-                            </div>`;
-                            newHtml += questionHtml;
-                        })
-                    }
-                    $('.board').html(newHtml);
-                    this.submitAnswer();
-                }
+            this.reRender();
+        } else {
+            this.questions
+            .forEach(function (q) {
+                var showAnswer = q.viewed ? "answered" : "hidden";
+                var hideCategory = q.viewed ? "hidden" : "";
+                var questionHtml = `
+                <div class="results ${q.viewed} ${hideCategory}" id="${q.id}">
+                    <div class="category" id="${q.id}">
+                            ${q.category}
+                        <div class="pointValue" id="${q.id}">
+                            $${q.value}
+                        </div>
+                        <div class="answer ${showAnswer}">
+                            ${q.answer}
+                        </div>
+                    </div>
+                </div>`;
+                newHtml += questionHtml;
+            })
+        }
+        $('.board').html(newHtml);
+        this.submitAnswer();
+    };
 
     chooseQuestion (event) {
         var currentId = Number(event.target.id);
         this.currentQuestion = _.find(this.questions, { id: currentId });
         this.viewed = true;
         this.render();
-    }
+    };
 
     checkAnswer () {
         var input = $('.answerBox').val().split(" ");
@@ -80,16 +80,16 @@ class AppController {
         }
         $('#score').html(this.score);
         this.currentQuestion = "";
-    }
+    };
 
     submitAnswer () {
         $("#submitAnswer").click(() => {
             this.checkAnswer();
         })
-        //$('#modal').removeClass('is-active');
-        //this.render();
+        // $('#modal').removeClass('is-active');
+        // this.render();
 
-    }
+    };
 
     reRender() {
         var count = 15;
@@ -104,13 +104,13 @@ class AppController {
             this.render();
         }, 15000);
         clearTimeout();
-    }
+    };
 
     start () {
-      this.render();
-      $(document).on('click','.results', this.chooseQuestion.bind(this));
-      $('.scoreboard').removeClass('hidden');
-     }
-}
+        this.render();
+        $(document).on('click','.results', this.chooseQuestion.bind(this));
+        $('.scoreboard').removeClass('hidden');
+    };
+};
 
 export { AppController };
