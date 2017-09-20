@@ -3,13 +3,14 @@ import _ from 'lodash';
 import { Question } from './Questions';
 
 class AppController {
-    constructor () {
+    constructor() {
         this.score = 0;
         this.questions = [];
         this.currentQuestion = "";
+        this.count = 15;
     };
 
-    addQuestion (data) {
+    addQuestion(data) {
         var question = new Question({
             id: data.id,
             category: data.category.title,
@@ -20,8 +21,9 @@ class AppController {
         this.questions.push(question);
     };
 
-    render () {
+    render() {
         var newHtml = ``;
+        $('#score').html(this.score);
 
         if (this.currentQuestion != "") {
             this.currentQuestion.viewed = true;
@@ -38,7 +40,7 @@ class AppController {
                                 <div class="timer"></div>
                               </div>
                         </div>`;
-            this.reRender();
+            //this.reRender();
         } else {
             this.questions
             .forEach(function (q) {
@@ -63,14 +65,14 @@ class AppController {
         this.submitAnswer();
     };
 
-    chooseQuestion (event) {
+    chooseQuestion(event) {
         var currentId = Number(event.target.id);
         this.currentQuestion = _.find(this.questions, { id: currentId });
         this.viewed = true;
         this.render();
     };
 
-    checkAnswer () {
+    checkAnswer() {
         var input = $('.answerBox').val().split(" ");
         var correct = this.currentQuestion.checkAnswer(input);
         if (correct) {
@@ -80,33 +82,32 @@ class AppController {
         }
         $('#score').html(this.score);
         this.currentQuestion = "";
+        this.render();
     };
 
-    submitAnswer () {
+    submitAnswer() {
         $("#submitAnswer").click(() => {
             this.checkAnswer();
         })
-        // $('#modal').removeClass('is-active');
-        // this.render();
-
     };
 
-    reRender() {
-        var count = 15;
-        var timer = setInterval(() => {
-            count -= 1;
-            $('.timer').html(count);
-        }, 1000);
-        count = 15;
-        var timeout = setTimeout (() => {
-            this.currentQuestion = '';
-            clearInterval(timer);
-            this.render();
-        }, 15000);
-        clearTimeout();
-    };
+    // THIS WILL SET A TIMER FOR ANSWERING
 
-    start () {
+    // reRender() {
+    //     var timer = setInterval(() => {
+    //         this.count -= 1;
+    //         $('.timer').html(this.count);
+    //     }, 1000);
+    //     this.count = 15;
+    //     var timeout = setTimeout (() => {
+    //         this.currentQuestion = '';
+    //         clearInterval(timer);
+    //         this.render();
+    //     }, 15000);
+    //     //clearTimeout();
+    // };
+
+    start() {
         this.render();
         $(document).on('click','.results', this.chooseQuestion.bind(this));
         $('.scoreboard').removeClass('hidden');
